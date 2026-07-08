@@ -65,21 +65,45 @@ draw.text((num_x + 8, num_y + 8), num_str, fill=(0, 0, 0), font=font_large, anch
 # Draw Main text
 draw.text((num_x, num_y), num_str, fill=green_text, font=font_large, anchor="mm")
 
-# 6. Draw "DAYS REMAINING" pill button at the bottom
-pill_w, pill_h = 330, 50
+# ... [Keep #1 through #5 the same]
+
+# 6. Draw "DAYS REMAINING" pill button at the bottom (FULLY FIXED)
+font_sub = ImageFont.truetype("DejaVuSans-Bold.ttf", 42) # Re-define to be safe
+days_text = "DAYS REMAINING"
+
+# --- OLD METHOD (Fixed width - this caused the error) ---
+# pill_w, pill_h = 330, 50
+
+# --- NEW FIXED METHOD ---
+# Calculate the exact bounding box of the text to ensure perfect fit.
+text_bbox = draw.textbbox((0, 0), days_text, font=font_sub)
+text_w = text_bbox[2] - text_bbox[0]
+text_h = text_bbox[3] - text_bbox[1]
+
+# Define the pill size based on the text width, adding padding.
+pill_padding_x = 40  # Add 40px of padding to each side.
+pill_w = text_w + (pill_padding_x * 2)
+pill_h = 70 # Adjust height as needed.
+
 pill_x1 = (width - pill_w) // 2
-pill_y1 = 475
+pill_y1 = 465 # Adjust vertical position if necessary.
 pill_x2 = pill_x1 + pill_w
 pill_y2 = pill_y1 + pill_h
 
+# Ensure the pill color and text color are correct as per original design.
+# Pill background must be Green.
 draw.rectangle([(pill_x1, pill_y1), (pill_x2, pill_y2)], fill=green_text)
+
+# The text INSIDE the pill must be White.
 draw.text(
     ((pill_x1 + pill_x2) // 2, (pill_y1 + pill_y2) // 2),
-    "DAYS REMAINING",
-    fill=white_text,
+    days_text,
+    fill=white_text,  # Set text inside green box to White
     font=font_sub,
     anchor="mm"
 )
+
+# ... [Keep #7 through #8 the same]
 
 # 7. Save Image Locally
 image_path = "countdown.png"
