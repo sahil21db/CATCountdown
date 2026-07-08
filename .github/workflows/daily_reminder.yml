@@ -4,7 +4,7 @@ on:
   schedule:
     # 03:30 UTC is 09:00 AM IST
     - cron: '30 3 * * *'
-  workflow_dispatch: # Allows you to trigger it manually to test
+  workflow_dispatch: # Allows manual trigger execution for testing
 
 jobs:
   send_reminder:
@@ -19,7 +19,8 @@ jobs:
           python-version: '3.x'
 
       - name: Install dependencies
-        run: pip install requests
+        run: |
+          pip install requests pillow
 
       - name: Run script
         env:
