@@ -12,5 +12,5 @@ if days_left >= 0:
     payload = {
         "content": f"🚨 **CAT 2026 Countdown** 🚨\n⏳ Only **{days_left} days** left until the exam! Make today count."
     }
-    webhook_url = os.environ = os.getenv("DISCORD_WEBHOOK_URL")
+    webhook_url = os.getenv("DISCORD_WEBHOOK_URL")
     requests.post(webhook_url, json=payload)
