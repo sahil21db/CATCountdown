@@ -6,8 +6,9 @@ from PIL import Image, ImageDraw, ImageFont
 
 # ── Configuration ────────────────────────────────────────────────────────────
 
-FONT_PATH = "assets/font.ttf"
-BANNER_PATH = "assets/banner_base.png"
+SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
+FONT_PATH = os.path.join(SCRIPT_DIR, "assets", "font.ttf")
+BANNER_PATH = os.path.join(SCRIPT_DIR, "assets", "banner_base.png")
 
 COUNTDOWN_FONT_SIZE = 250
 TEXT_SHADOW_OFFSET = 8

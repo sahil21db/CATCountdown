@@ -18,9 +18,8 @@ An automated Discord countdown that overlays the days remaining until the CAT 20
 ├── assets/
 │   ├── banner_base.png          # Base banner template image
 │   └── font.ttf                 # Custom font for countdown text
-├── bot.py                       # Full Discord bot (optional, for self-hosting)
 ├── countdown.py                 # Webhook-based countdown script (used by GitHub Actions)
-└── README.md                    # This file
+└── readme.md                    # This file
 ```
 
 ## Setup Instructions
